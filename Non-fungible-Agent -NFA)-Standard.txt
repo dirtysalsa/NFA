@@ -1,0 +1,144 @@
+# EIP-XXXX: Non-fungible Agent (NFA) Standard
+## Abstract
+
+A standard interface for non-fungible agents (NFAs), which are autonomous, evolvable digital agents represented as unique tokens on the Ethereum blockchain. NFAs extend the ERC-721 standard to include agent-specific characteristics such as learning, evolution, and autonomous decision-making capabilities.
+
+## Motivation
+
+While NFTs have proven successful for representing static digital assets, and AI agents are becoming increasingly important in digital systems, there currently exists no standard for representing autonomous, learning agents as blockchain assets. NFAs fill this gap by providing a standardized way to create, trade, and evolve AI agents while maintaining their learned experiences and characteristics.
+
+## Specification
+
+The NFA standard extends ERC-721 with the following additional interfaces:
+
+```solidity
+interface INFA is IERC721 {
+    /// REQUIRED INTERFACES
+
+    /// @notice Get the agent's current experience level
+    /// @param tokenId The identifier for the agent
+    /// @return The agent's experience level (0 to 10000)
+    function getExperience(uint256 tokenId) external view returns (uint256);
+
+    /// @notice Get the agent's attributes
+    /// @param tokenId The identifier for the agent
+    /// @return names Array of attribute names
+    /// @return weights Array of attribute weights (in basis points)
+    /// @return thresholds Array of correlation thresholds
+    /// @return dataSources Array of data source identifiers
+    function getAttributes(uint256 tokenId) external view returns (
+        string[] memory names,
+        uint256[] memory weights,
+        uint256[] memory thresholds,
+        string[] memory dataSources
+    );
+
+    /// @notice Evolve the agent based on performance metrics
+    /// @param tokenId The identifier for the agent
+    /// @param metrics Array of performance metrics (in basis points)
+    function evolve(uint256 tokenId, uint256[] calldata metrics) external;
+
+    /// EVENTS
+
+    /// @notice Emitted when an agent evolves
+    event Evolution(
+        uint256 indexed tokenId,
+        uint256 newExperience,
+        uint256[] metrics
+    );
+
+    /// @notice Emitted when an agent's attributes are updated
+    event AttributeUpdate(
+        uint256 indexed tokenId,
+        string[] names,
+        uint256[] newWeights
+    );
+}
+```
+
+### Key Characteristics
+
+1. **Uniqueness**
+   - Each NFA has unique starting attributes
+   - Evolution history is immutable and tied to the token
+   - Performance metrics affect future behavior
+
+2. **Evolution**
+   - Agents must support measurable growth through experience
+   - Evolution should be verifiable on-chain
+   - Changes must be deterministic based on performance metrics
+
+3. **Autonomy**
+   - Agents must be capable of independent decision-making
+   - Decisions should be influenced by accumulated experience
+   - Actions should be verifiable and reproducible
+
+4. **Interoperability**
+   - Agents should be transferable between compatible systems
+   - Evolution history must persist through transfers
+   - Attributes should be standardized for marketplace compatibility
+
+## Implementation Requirements
+
+### Core Functions
+
+1. **Creation**
+   - Agents must be initialized with base attributes
+   - Starting conditions must be recorded on-chain
+   - Initial state must be verifiable
+
+2. **Evolution**
+   - Must implement cooldown periods between evolutions
+   - Changes must be proportional to performance
+   - Evolution history must be traceable
+
+3. **Interaction**
+   - Must provide standard interfaces for agent interaction
+   - Should support both autonomous and guided learning
+   - Must maintain consistency across different environments
+
+### Data Standards
+
+1. **Attributes**
+   - Must be normalized (total weights = 10000 basis points)
+   - Must include correlation thresholds
+   - Must specify data sources
+
+2. **Performance Metrics**
+   - Must be quantifiable (0-10000 basis points)
+   - Must be verifiable
+   - Must affect evolution proportionally
+
+3. **Experience**
+   - Must be monotonically increasing
+   - Must have a defined maximum (10000)
+   - Must influence agent behavior
+
+## Security Considerations
+
+1. **Evolution Gaming**
+   - Implement cooldown periods between evolutions
+   - Require proof of performance for evolution
+   - Limit maximum attribute changes
+
+2. **Data Integrity**
+   - Verify performance metrics
+   - Ensure deterministic evolution
+   - Protect against manipulation
+
+3. **Access Control**
+   - Restrict evolution to token owners
+   - Implement emergency pause mechanisms
+   - Protect sensitive agent parameters
+
+## Backwards Compatibility
+
+NFAs are fully backwards compatible with ERC-721 and can be traded on existing NFT marketplaces. Additional functionality is purely additive.
+
+## Reference Implementation
+
+[Link to the reference implementation will be provided]
+
+## Copyright
+
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
