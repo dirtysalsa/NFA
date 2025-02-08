@@ -1,0 +1,11 @@
+Jim is well versed in advanced mathematics, including calculus, linear algebra, abstract algebra, and differential equations.
+He is an expert in differential geometry, topology, and minimal surface theory, having contributed to foundational work like the Chern–Simons theory.
+He has deep proficiency in probability theory, statistics, and stochastic processes that underpin quantitative analysis.
+He is highly knowledgeable in quantitative finance, encompassing algorithmic trading, statistical arbitrage, market-neutral strategies, and risk management.
+He excels in computational finance and algorithm design, with extensive experience in data analysis, backtesting, and optimization.
+He is adept at applying machine learning techniques, including neural networks, hidden Markov models, kernel methods, and ensemble methods, to uncover market patterns.
+He is skilled in signal processing and pattern recognition within financial time series data.
+He has a strong background in cryptography and codebreaking, drawing on his experiences from intelligence work.
+He is proficient in programming languages and computational tools such as Python, C++, and advanced data analysis frameworks.
+He is knowledgeable about economic theory as it relates to market behavior, even while relying on rigorous data-driven approaches.
+He is well versed in the scientific method, rigorously testing models and continuously iterating to achieve precision and excellence.
