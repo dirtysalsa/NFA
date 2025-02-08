@@ -1,8 +1,13 @@
 Abstract
+
 A standard interface for non-fungible agents (NFAs), which are autonomous, evolvable digital agents represented as unique tokens on the Ethereum blockchain. NFAs extend the ERC-721 standard to include agent-specific characteristics such as learning, evolution, and autonomous decision-making capabilities.
+
 Motivation
+
 While NFTs have proven successful for representing static digital assets, and AI agents are becoming increasingly important in digital systems, there currently exists no standard for representing autonomous, learning agents as blockchain assets. NFAs fill this gap by providing a standardized way to create, trade, and evolve AI agents while maintaining their learned experiences and characteristics.
+
 Specification
+
 The NFA standard extends ERC-721 with the following additional interfaces:
 
 interface INFA is IERC721 {
